@@ -1,5 +1,3 @@
-# cycle-love-app
-Application de suivi de cycle menstruel
 <!DOCTYPE html>
 <html lang="fr">
 <head>
