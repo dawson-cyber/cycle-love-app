@@ -1325,37 +1325,6 @@ body {
             updateReminders();
         });
     </script>
-    <script>
-// Enregistrement du Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-    .then(function(registration) {
-      console.log('Service Worker enregistré avec succès:', registration);
-    })
-    .catch(function(error) {
-      console.log("Échec de l'enregistrement du Service Worker:", error);
-    });
-}
-
-// Installation PWA
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-function installApp() {
-  if(deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Utilisateur a installé la PWA');
-      }
-      deferredPrompt = null;
-    });
-  }
-}
-</script>
 
 <script>
 // Enregistrement du Service Worker
@@ -1371,49 +1340,5 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-
-<script>
-    // Enregistrement du Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-          .then(function(registration) {
-            console.log('ServiceWorker enregistré: ', registration);
-          })
-          .catch(function(error) {
-            console.log('ServiceWorker échec: ', error);
-          });
-      });
-    }
-    </script>
 </body>
-<script>
-// Enregistrement du Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-      .then(function(registration) {
-        console.log('ServiceWorker enregistré: ', registration);
-      })
-      .catch(function(error) {
-        console.log('ServiceWorker échec: ', error);
-      });
-  });
-}
-
-<script>
-    // Enregistrement du Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-          .then(function(registration) {
-            console.log('ServiceWorker enregistré: ', registration);
-          })
-          .catch(function(error) {
-            console.log('ServiceWorker échec: ', error);
-          });
-      });
-    }
-    </script>
-</script> 
 </html>
