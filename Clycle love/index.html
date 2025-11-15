@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script>
+// Redirection si on est sur la page racine
+if (window.location.pathname === '/' || window.location.pathname === '/cyclelove-app/') {
+  window.location.href = '/cyclelove-app/index.html';
+}
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌸 CycleLove - Suivi de cycle complet</title>
@@ -1319,37 +1325,6 @@ body {
             updateReminders();
         });
     </script>
-    <script>
-// Enregistrement du Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-    .then(function(registration) {
-      console.log('Service Worker enregistré avec succès:', registration);
-    })
-    .catch(function(error) {
-      console.log("Échec de l'enregistrement du Service Worker:", error);
-    });
-}
-
-// Installation PWA
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-function installApp() {
-  if(deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Utilisateur a installé la PWA');
-      }
-      deferredPrompt = null;
-    });
-  }
-}
-</script>
 
 <script>
 // Enregistrement du Service Worker
@@ -1366,18 +1341,4 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 </body>
-<script>
-// Enregistrement du Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/cyclelove-app/service-worker.js')
-      .then(function(registration) {
-        console.log('ServiceWorker enregistré: ', registration);
-      })
-      .catch(function(error) {
-        console.log('ServiceWorker échec: ', error);
-      });
-  });
-}
-</script>
 </html>
